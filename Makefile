@@ -17,3 +17,6 @@ ird: install-dist run-dist
 
 check-deps:
 	./gradlew dependencyUpdates -Drevision=release
+
+lint:
+	./gradlew checkstyleMain

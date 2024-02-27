@@ -1,5 +1,7 @@
 plugins {
     application
+    checkstyle
+
     id("com.github.ben-manes.versions") version "0.51.0"
 }
 
@@ -23,3 +25,6 @@ tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
 }
 
+checkstyle {
+    configDirectory.set(File(project.projectDir, "config/checkstyle"))
+}
