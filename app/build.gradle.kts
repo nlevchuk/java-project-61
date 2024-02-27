@@ -1,5 +1,6 @@
 plugins {
     application
+    id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 group = "hexlet.code"
@@ -10,8 +11,8 @@ repositories { mavenCentral() }
 application { mainClass = "hexlet.code.App" }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation(platform("org.junit:junit-bom:5.10.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
 }
 
 tasks.test {
