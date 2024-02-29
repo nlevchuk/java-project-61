@@ -3,6 +3,8 @@ package hexlet.code;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
+import hexlet.code.games.Even;
+
 class App {
     public static void main(String[] args) {
         // Constants
@@ -14,6 +16,7 @@ class App {
 
         System.out.println("Please enter the game number and press Enter.");
         System.out.println(greetNumber + " - Greet");
+        System.out.println(evenGameNumber + " - Even");
         System.out.println(exitNumber + " - Exit");
         System.out.print("Your choice: ");
 
@@ -44,6 +47,8 @@ class App {
             case greetNumber:
                 // noop
                 break;
+            case evenGameNumber:
+                Even.run(userName, scanner);
                 break;
             default:
                 System.out.println("Unknown game");
