@@ -13,7 +13,12 @@ public class Calc implements Game {
     }
 
     public String getCorrectAnswer(String question) {
-        return parseExpression(question);
+        String[] parts = question.split(" ");
+        char operation = parts[1].charAt(0);
+        int firstOperand = Integer.valueOf(parts[0]);
+        int secondOperand = Integer.valueOf(parts[2]);
+
+        return calculateExpression(operation, firstOperand, secondOperand);
     }
 
     private String buildExpression() {
@@ -24,12 +29,7 @@ public class Calc implements Game {
         return firstOperand + " " + operation + " " + secondOperand;
     }
 
-    private String parseExpression(String expr) {
-        String[] parts = expr.split(" ");
-        int firstOperand = Integer.valueOf(parts[0]);
-        char operation = parts[1].charAt(0);
-        int secondOperand = Integer.valueOf(parts[2]);
-
+    private String calculateExpression(char operation, int firstOperand, int secondOperand) {
         int result = 0;
         switch (operation) {
             case '+':
