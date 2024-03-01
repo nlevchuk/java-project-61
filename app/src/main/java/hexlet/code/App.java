@@ -43,12 +43,14 @@ class App {
         String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
 
+        Game currentGame;
         switch (gameNumber) {
             case greetNumber:
                 // noop
                 break;
             case evenGameNumber:
-                Even.run(userName, scanner);
+                currentGame = new Even();
+                Engine.runGame(currentGame, userName, scanner);
                 break;
             default:
                 System.out.println("Unknown game");
