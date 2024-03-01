@@ -3,3 +3,6 @@
 
 #### Even game
 [![asciicast](https://asciinema.org/a/643991.svg)](https://asciinema.org/a/643991)
+
+#### Calc game
+[![asciicast](https://asciinema.org/a/644440.svg)](https://asciinema.org/a/644440)
