@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
 
 class App {
     public static void main(String[] args) {
@@ -11,12 +12,14 @@ class App {
         final int exitNumber = 0;
         final int greetNumber = 1;
         final int evenGameNumber = 2;
+        final int calcGameNumber = 3;
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter the game number and press Enter.");
         System.out.println(greetNumber + " - Greet");
         System.out.println(evenGameNumber + " - Even");
+        System.out.println(calcGameNumber + " - Calc");
         System.out.println(exitNumber + " - Exit");
         System.out.print("Your choice: ");
 
@@ -50,6 +53,10 @@ class App {
                 break;
             case evenGameNumber:
                 currentGame = new Even();
+                Engine.runGame(currentGame, userName, scanner);
+                break;
+            case calcGameNumber:
+                currentGame = new Calc();
                 Engine.runGame(currentGame, userName, scanner);
                 break;
             default:
