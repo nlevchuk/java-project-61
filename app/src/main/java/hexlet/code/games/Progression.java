@@ -9,6 +9,15 @@ public class Progression implements Game {
     private final String unknownTermSign = "..";
     private final int sequenceLength = 10;
 
+    public int getNumber() {
+        return 5;
+    }
+
+    public String getName() {
+        return "Progression";
+    }
+
+
     public String getRule() {
         return "What number is missing in the progression?";
     }

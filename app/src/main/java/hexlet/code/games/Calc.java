@@ -4,6 +4,14 @@ import hexlet.code.Game;
 import hexlet.code.utils.RandomNumberGenerator;
 
 public class Calc implements Game {
+    public int getNumber() {
+        return 3;
+    }
+
+    public String getName() {
+        return "Calc";
+    }
+
     public String getRule() {
         return "What is the result of the expression?";
     }

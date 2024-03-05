@@ -4,6 +4,14 @@ import hexlet.code.Game;
 import hexlet.code.utils.RandomNumberGenerator;
 
 public class Gcd implements Game {
+    public int getNumber() {
+        return 4;
+    }
+
+    public String getName() {
+        return "GCD";
+    }
+
     public String getRule() {
         return "Find the greatest common divisor of given numbers.";
     }

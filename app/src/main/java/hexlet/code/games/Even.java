@@ -4,6 +4,14 @@ import hexlet.code.Game;
 import hexlet.code.utils.RandomNumberGenerator;
 
 public class Even implements Game {
+    public int getNumber() {
+        return 2;
+    }
+
+    public String getName() {
+        return "Even";
+    }
+
     public String getRule() {
         return "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }

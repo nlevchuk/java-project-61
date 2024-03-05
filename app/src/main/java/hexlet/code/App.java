@@ -13,19 +13,15 @@ class App {
         // Constants
         final int exitNumber = 0;
         final int greetNumber = 1;
-        final int evenGameNumber = 2;
-        final int calcGameNumber = 3;
-        final int gcdGameNumber = 4;
-        final int progressionGameNumber = 5;
+        final Game[] games = initGames();
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter the game number and press Enter.");
         System.out.println(greetNumber + " - Greet");
-        System.out.println(evenGameNumber + " - Even");
-        System.out.println(calcGameNumber + " - Calc");
-        System.out.println(gcdGameNumber + " - GCD");
-        System.out.println(progressionGameNumber + " - Progression");
+        for (Game game : games) {
+            System.out.println(game.getNumber() + " - " + game.getName());
+        }
         System.out.println(exitNumber + " - Exit");
         System.out.print("Your choice: ");
 
@@ -46,42 +42,53 @@ class App {
             return;
         }
 
-        System.out.println("Welcome to the Brain Games!");
+        Game currentGame = getGame(gameNumber, games);
+        if (gameNumber != greetNumber && currentGame == null) {
+            System.out.println("The provided number is not included in the set of numbers listed above.");
+            scanner.close();
+            return;
+        }
 
+        System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
 
-        Game currentGame;
-        switch (gameNumber) {
-            case greetNumber:
-                // noop
-                break;
-            case evenGameNumber:
-                currentGame = new Even();
-                Engine.runGame(currentGame, userName, scanner);
-                break;
-            case calcGameNumber:
-                currentGame = new Calc();
-                Engine.runGame(currentGame, userName, scanner);
-                break;
-            case gcdGameNumber:
-                currentGame = new Gcd();
-                Engine.runGame(currentGame, userName, scanner);
-                break;
-            case progressionGameNumber:
-                currentGame = new Progression();
-                Engine.runGame(currentGame, userName, scanner);
-                break;
-            default:
-                System.out.println("Unknown game");
+        if (currentGame != null) {
+            Engine.runGame(currentGame, userName, scanner);
         }
 
         scanner.close();
     }
 
+    private static Game[] initGames() {
+        final Game evenGame = new Even();
+        final Game calcGame = new Calc();
+        final Game gcdGame = new Gcd();
+        final Game progressionGame = new Progression();
+
+        // How effective is it in terms of memory?
+        Game[] games = {
+            evenGame,
+            calcGame,
+            gcdGame,
+            progressionGame,
+        };
+
+        return games;
+    }
+
     private static int chooseGameNumber(Scanner scanner) throws InputMismatchException {
         int gameNumber = scanner.nextInt();
         return gameNumber;
+    }
+
+    private static Game getGame(int gameNumber, Game[] games) {
+        for (Game game : games) {
+            if (game.getNumber() == gameNumber) {
+                return game;
+            }
+        }
+        return null;
     }
 }
