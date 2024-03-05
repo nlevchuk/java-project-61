@@ -7,6 +7,7 @@ import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Gcd;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 class App {
     public static void main(String[] args) {
@@ -66,6 +67,7 @@ class App {
         final Game calcGame = new Calc();
         final Game gcdGame = new Gcd();
         final Game progressionGame = new Progression();
+        final Game primeGame = new Prime();
 
         // How effective is it in terms of memory?
         Game[] games = {
@@ -73,6 +75,7 @@ class App {
             calcGame,
             gcdGame,
             progressionGame,
+            primeGame
         };
 
         return games;
