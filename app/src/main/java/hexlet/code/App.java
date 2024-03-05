@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import hexlet.code.games.Even;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;
 
 class App {
     public static void main(String[] args) {
@@ -15,6 +16,7 @@ class App {
         final int evenGameNumber = 2;
         final int calcGameNumber = 3;
         final int gcdGameNumber = 4;
+        final int progressionGameNumber = 5;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,6 +25,7 @@ class App {
         System.out.println(evenGameNumber + " - Even");
         System.out.println(calcGameNumber + " - Calc");
         System.out.println(gcdGameNumber + " - GCD");
+        System.out.println(progressionGameNumber + " - Progression");
         System.out.println(exitNumber + " - Exit");
         System.out.print("Your choice: ");
 
@@ -64,6 +67,10 @@ class App {
                 break;
             case gcdGameNumber:
                 currentGame = new Gcd();
+                Engine.runGame(currentGame, userName, scanner);
+                break;
+            case progressionGameNumber:
+                currentGame = new Progression();
                 Engine.runGame(currentGame, userName, scanner);
                 break;
             default:
