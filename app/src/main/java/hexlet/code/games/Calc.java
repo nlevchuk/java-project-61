@@ -60,6 +60,6 @@ public class Calc implements Game {
         final char[] operations = {'+', '-', '*'};
         int operationNumber = RandomNumberGenerator.generate(operations.length);
 
-        return operations[operationNumber];
+        return operations[operationNumber - 1];
     }
 }
