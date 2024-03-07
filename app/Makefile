@@ -11,7 +11,7 @@ install-dist:
 	./gradlew clean installDist
 
 run-dist:
-	./app/build/install/app/bin/app
+	./build/install/app/bin/app
 
 ird: install-dist run-dist
 

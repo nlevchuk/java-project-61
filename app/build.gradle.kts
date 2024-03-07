@@ -24,7 +24,3 @@ tasks.test {
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
 }
-
-checkstyle {
-    configDirectory.set(File(project.projectDir, "config/checkstyle"))
-}
