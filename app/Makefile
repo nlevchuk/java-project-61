@@ -20,3 +20,5 @@ check-deps:
 
 lint:
 	./gradlew checkstyleMain
+
+.PHONY: build
