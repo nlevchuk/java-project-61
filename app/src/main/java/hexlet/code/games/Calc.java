@@ -1,44 +1,43 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
+import java.util.Scanner;
+
+import hexlet.code.Engine;
 import hexlet.code.utils.RandomNumberGenerator;
 
-public class Calc implements Game {
-    public int getNumber() {
-        return 3;
+public class Calc {
+    public static void run(int iterations, String userName, Scanner scanner) {
+        System.out.println("What is the result of the expression?");
+
+        int begin = 1;
+        int end = 10;
+        String[] questions = new String[iterations];
+        String[] correctAnswers = new String[iterations];
+        for (int i = 0; i < iterations; i++) {
+            int firstOperand = RandomNumberGenerator.generateBetween(begin, end);
+            int secondOperand = RandomNumberGenerator.generateBetween(begin, end);
+            char operation = getOperation();
+
+            questions[i] = firstOperand + " " + operation + " " + secondOperand;
+            int correctAnswer = calculateExpression(operation, firstOperand, secondOperand);
+            correctAnswers[i] = String.valueOf(correctAnswer);
+        }
+
+        Engine.runGame(questions, correctAnswers, userName, scanner);
     }
 
-    public String getName() {
-        return "Calc";
+    private static char getOperation() {
+        int begin = 0;
+        int end = 2;
+        int operationNumber = RandomNumberGenerator.generateBetween(begin, end);
+        char[] operations = {'+', '-', '*'};
+
+        return operations[operationNumber];
     }
 
-    public String getRule() {
-        return "What is the result of the expression?";
-    }
-
-    public String getQuestion() {
-        return buildExpression();
-    }
-
-    public String getCorrectAnswer(String question) {
-        String[] parts = question.split(" ");
-        char operation = parts[1].charAt(0);
-        int firstOperand = Integer.valueOf(parts[0]);
-        int secondOperand = Integer.valueOf(parts[2]);
-
-        return calculateExpression(operation, firstOperand, secondOperand);
-    }
-
-    private String buildExpression() {
-        int firstOperand = RandomNumberGenerator.generate(10);
-        int secondOperand = RandomNumberGenerator.generate(10);
-        char operation = getOperation();
-
-        return firstOperand + " " + operation + " " + secondOperand;
-    }
-
-    private String calculateExpression(char operation, int firstOperand, int secondOperand) {
+    private static int calculateExpression(char operation, int firstOperand, int secondOperand) {
         int result = 0;
+
         switch (operation) {
             case '+':
                 result = firstOperand + secondOperand;
@@ -53,13 +52,6 @@ public class Calc implements Game {
                 System.out.println("Unknown operation");
         }
 
-        return String.valueOf(result);
-    }
-
-    private char getOperation() {
-        final char[] operations = {'+', '-', '*'};
-        int operationNumber = RandomNumberGenerator.generate(operations.length);
-
-        return operations[operationNumber - 1];
+        return result;
     }
 }

@@ -1,32 +1,28 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
+import java.util.Scanner;
+
+import hexlet.code.Engine;
 import hexlet.code.utils.RandomNumberGenerator;
 
-public class Even implements Game {
-    public int getNumber() {
-        return 2;
+public class Even {
+    public static void run(int iterations, String userName, Scanner scanner) {
+        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+
+        int begin = 1;
+        int end = 100;
+        String[] questions = new String[iterations];
+        String[] correctAnswers = new String[iterations];
+        for (int i = 0; i < iterations; i++) {
+            int number = RandomNumberGenerator.generateBetween(begin, end);
+            questions[i] = String.valueOf(number);
+            correctAnswers[i] = isEvenNumber(number) ? "yes" : "no";
+        }
+
+        Engine.runGame(questions, correctAnswers, userName, scanner);
     }
 
-    public String getName() {
-        return "Even";
-    }
-
-    public String getRule() {
-        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    }
-
-    public String getQuestion() {
-        int number = RandomNumberGenerator.generate();
-        return String.valueOf(number);
-    }
-
-    public String getCorrectAnswer(String question) {
-        int number = Integer.valueOf(question);
-        return isEvenNumber(number) ? "yes" : "no";
-    }
-
-    private boolean isEvenNumber(int number) {
+    private static boolean isEvenNumber(int number) {
         return number % 2 == 0;
     }
 }

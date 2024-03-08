@@ -3,18 +3,14 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static void runGame(Game game, String userName, Scanner scanner) {
-        final int iterations = 3;
-
-        System.out.println(game.getRule());
-
-        for (int i = 0; i < iterations; i++) {
-            String question = game.getQuestion();
+    public static void runGame(String[] questions, String[] correctAnswers, String userName, Scanner scanner) {
+        for (int i = 0; i < questions.length; i++) {
+            String question = questions[i];
+            String correctAnswer = correctAnswers[i];
 
             System.out.println("Question: " + question);
             System.out.print("Your answer: ");
             String userAnswer = scanner.next();
-            String correctAnswer = game.getCorrectAnswer(question);
 
             if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
