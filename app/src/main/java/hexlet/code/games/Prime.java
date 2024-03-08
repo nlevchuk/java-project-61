@@ -9,8 +9,8 @@ public class Prime {
     public static void run(int iterations, String userName, Scanner scanner) {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
-        int begin = 2;
-        int end = 100;
+        final int begin = 2;
+        final int end = 100;
         String[] questions = new String[iterations];
         String[] correctAnswers = new String[iterations];
         for (int i = 0; i < iterations; i++) {

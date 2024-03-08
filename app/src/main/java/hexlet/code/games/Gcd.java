@@ -9,8 +9,8 @@ public class Gcd {
     public static void run(int iterations, String userName, Scanner scanner) {
         System.out.println("Find the greatest common divisor of given numbers.");
 
-        int begin = 1;
-        int end = 100;
+        final int begin = 1;
+        final int end = 100;
         String[] questions = new String[iterations];
         String[] correctAnswers = new String[iterations];
         for (int i = 0; i < iterations; i++) {
