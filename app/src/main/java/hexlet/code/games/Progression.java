@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 import java.util.Scanner;
-import java.util.StringJoiner;
 
 import hexlet.code.Engine;
 import hexlet.code.utils.RandomNumberGenerator;
@@ -12,29 +11,35 @@ public class Progression {
 
         final int begin = 1;
         final int end = 10;
-        final int sequenceLength = 10;
         String[] questions = new String[iterations];
         String[] correctAnswers = new String[iterations];
         for (int i = 0; i < iterations; i++) {
-            int initialTerm = RandomNumberGenerator.generateBetween(begin, end);
-            int commonDiff = RandomNumberGenerator.generateBetween(begin, end);
+            String[] sequence = generateSequence();
+
             int unknownTermIndex = RandomNumberGenerator.generateBetween(begin, end);
+            correctAnswers[i] = sequence[unknownTermIndex];
 
-            StringJoiner sequenceBuilder = new StringJoiner(" ");
-            for (int n = 1; n <= sequenceLength; n++) {
-                int term = calculateSequenceTerm(initialTerm, commonDiff, n);
-                if (n == unknownTermIndex) {
-                    sequenceBuilder.add("..");
-                    correctAnswers[i] = String.valueOf(term);
-                } else {
-                    sequenceBuilder.add(String.valueOf(term));
-                }
-            }
-
-            questions[i] = sequenceBuilder.toString();
+            sequence[unknownTermIndex] = "..";
+            questions[i] = String.join(" ", sequence);
         }
 
         Engine.runGame(questions, correctAnswers, userName, scanner);
+    }
+
+    private static String[] generateSequence() {
+        final int begin = 1;
+        final int end = 10;
+        final int sequenceLength = 10;
+        int initialTerm = RandomNumberGenerator.generateBetween(begin, end);
+        int commonDiff = RandomNumberGenerator.generateBetween(begin, end);
+
+        String[] sequence = new String[sequenceLength];
+        for (int i = 0; i < sequenceLength; i++) {
+            int term = calculateSequenceTerm(initialTerm, commonDiff, i);
+            sequence[i] = String.valueOf(term);
+        }
+
+        return sequence;
     }
 
     private static int calculateSequenceTerm(int initialTerm, int commonDiff, int n) {
