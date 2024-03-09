@@ -11,29 +11,13 @@ import hexlet.code.games.Prime;
 
 class App {
     public static void main(String[] args) {
-        // Constants
-        final int gameIterations = 3;
-        final int exitNumber = 0;
-        final int greetNumber = 1;
-        final int evenNumber = 2;
-        final int calcNumber = 3;
-        final int gcdNumber = 4;
-        final int progressionNumber = 5;
-        final int primeNumber = 6;
-
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Please enter the game number and press Enter.");
-        System.out.println(greetNumber + " - Greet");
-        System.out.println(evenNumber + " - Even");
-        System.out.println(calcNumber + " - Calc");
-        System.out.println(gcdNumber + " - GCD");
-        System.out.println(progressionNumber + " - Progression");
-        System.out.println(primeNumber + " - Prime");
-        System.out.println(exitNumber + " - Exit");
+        showGameList();
         System.out.print("Your choice: ");
 
-        int gameNumber = exitNumber;
+        int gameNumber = EXIT_NUMBER;
         try {
             gameNumber = chooseGameNumber(scanner);
         } catch (InputMismatchException e) {
@@ -44,7 +28,7 @@ class App {
 
         System.out.println(""); // Add an empty line after the your-choice line
 
-        if (gameNumber == exitNumber) {
+        if (gameNumber == EXIT_NUMBER) {
             System.out.println("Goodbye");
             scanner.close();
             return;
@@ -55,34 +39,58 @@ class App {
         String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
 
-        switch (gameNumber) {
-            case greetNumber:
-                //noop
-                break;
-            case evenNumber:
-                Even.run(gameIterations, userName, scanner);
-                break;
-            case calcNumber:
-                Calc.run(gameIterations, userName, scanner);
-                break;
-            case gcdNumber:
-                Gcd.run(gameIterations, userName, scanner);
-                break;
-            case progressionNumber:
-                Progression.run(gameIterations, userName, scanner);
-                break;
-            case primeNumber:
-                Prime.run(gameIterations, userName, scanner);
-                break;
-            default:
-                System.out.println("Unknown game");
-        }
+        runGame(gameNumber, userName, scanner);
 
         scanner.close();
+    }
+
+    // Constants
+    private static final int GAME_ITERATIONS = 3;
+    private static final int EXIT_NUMBER = 0;
+    private static final int GREET_NUMBER = 1;
+    private static final int EVEN_NUMBER = 2;
+    private static final int CALC_NUMBER = 3;
+    private static final int GCD_NUMBER = 4;
+    private static final int PROGRESSION_NUMBER = 5;
+    private static final int PRIME_NUMBER = 6;
+
+    private static void showGameList() {
+        System.out.println(GREET_NUMBER + " - Greet");
+        System.out.println(EVEN_NUMBER + " - Even");
+        System.out.println(CALC_NUMBER + " - Calc");
+        System.out.println(GCD_NUMBER + " - GCD");
+        System.out.println(PROGRESSION_NUMBER + " - Progression");
+        System.out.println(PRIME_NUMBER + " - Prime");
+        System.out.println(EXIT_NUMBER + " - Exit");
     }
 
     private static int chooseGameNumber(Scanner scanner) throws InputMismatchException {
         int gameNumber = scanner.nextInt();
         return gameNumber;
+    }
+
+    private static void runGame(int gameNumber, String userName, Scanner scanner) {
+        switch (gameNumber) {
+            case GREET_NUMBER:
+                //noop
+                break;
+            case EVEN_NUMBER:
+                Even.run(GAME_ITERATIONS, userName, scanner);
+                break;
+            case CALC_NUMBER:
+                Calc.run(GAME_ITERATIONS, userName, scanner);
+                break;
+            case GCD_NUMBER:
+                Gcd.run(GAME_ITERATIONS, userName, scanner);
+                break;
+            case PROGRESSION_NUMBER:
+                Progression.run(GAME_ITERATIONS, userName, scanner);
+                break;
+            case PRIME_NUMBER:
+                Prime.run(GAME_ITERATIONS, userName, scanner);
+                break;
+            default:
+                System.out.println("Unknown game");
+        }
     }
 }
