@@ -26,17 +26,15 @@ public class Gcd {
     }
 
     private static int computeGcd(int firstNumber, int secondNumber) {
-        int a = firstNumber;
-        int b = secondNumber;
+        int a = firstNumber > secondNumber ? firstNumber : secondNumber;
+        int b = firstNumber > secondNumber ? secondNumber : firstNumber;
 
-        while (!(a == 0 || b == 0)) {
-            if (a > b) {
-                a = a % b;
-            } else {
-                b = b % a;
-            }
+        while (b != 0) {
+            int dupA = a;
+            a = b;
+            b = dupA % b;
         }
 
-        return a == 0 ? b : a;
+        return a;
     }
 }
