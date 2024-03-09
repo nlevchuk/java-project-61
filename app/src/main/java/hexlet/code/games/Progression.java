@@ -9,8 +9,8 @@ public class Progression {
     public static void run(int iterations, String userName, Scanner scanner) {
         System.out.println("What number is missing in the progression?");
 
-        final int begin = 1;
-        final int end = 10;
+        final int begin = 0;
+        final int end = 9;
         String[] questions = new String[iterations];
         String[] correctAnswers = new String[iterations];
         for (int i = 0; i < iterations; i++) {
